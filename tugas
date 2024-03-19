@@ -35,33 +35,33 @@
     </div>
 
     <script>
-        // Menyimpan elemen HTML dalam variabel
+        
         let title = document.getElementById("title");
         let description = document.getElementById("description");
         let button = document.getElementById("button");
         let getData = document.getElementById("getData");
 
-        // Menambahkan event listener untuk tombol "Kirim"
+        
         button.addEventListener("click", (e) => {
-            // Memeriksa apakah judul atau deskripsi kosong
+            
             if (title.value.trim() === "" || description.value.trim() === "") {
-                // Menampilkan alert jika ada field yang kosong
+            
                 alert("Field tidak boleh kosong");
                 return; // Menghentikan proses lebih lanjut jika ada field yang kosong
             }
 
-            // Membuat array untuk menyimpan data judul dan deskripsi
+            
             let data = [];
             data.push(title.value);
             data.push(description.value);
 
-            // Menyimpan array data ke dalam localStorage setelah diubah menjadi string JSON
+            
             localStorage.setItem("todo", JSON.stringify(data));
 
-            // Mengambil kembali data dari localStorage dan mengubahnya menjadi array
+          
             let getDataArray = JSON.parse(localStorage.getItem("todo"));
 
-            // Membuat elemen <li> untuk menampilkan data yang dimasukkan oleh pengguna
+           
             let li = document.createElement("li");
             li.className = "todo-item"; // Menambahkan kelas untuk gaya CSS
             li.innerHTML = `
@@ -69,10 +69,10 @@
         <p class="todo-description">${getDataArray[1]}</p>
     `;
 
-            // Menambahkan elemen <li> ke dalam elemen <ul> yang memiliki id="getData"
+           
             getData.appendChild(li);
 
-            // Mengosongkan nilai input setelah data ditambahkan
+           
             title.value = "";
             description.value = "";
         })
